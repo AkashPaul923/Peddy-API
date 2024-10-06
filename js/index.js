@@ -34,13 +34,13 @@ const loadCatagorypets = async (category) =>{
 
 // display all pets
 const displaypets = (data) =>{
-    console.log(data)
+    // console.log(data)
     const petCardContainer = document.getElementById('pet-card-container')
     petCardContainer.innerHTML=''
     if(data.length === 0){
         // console.log('NO data found')
         petCardContainer.innerHTML=`
-        <div class= "p-5 rounded-xl border border-solid lg:col-span-3 bg-gray-200 py-40">
+        <div class= "p-5 rounded-xl border border-solid lg:col-span-3 bg-gray-200 py-40 w-full">
             <div class= "flex flex-col justify-center items-center gap-7">
                 <img class="mx-auto" src="assets/error.webp" alt="">
                 <p class="text-3xl font-extrabold text-center">No Data Found</p>
@@ -65,7 +65,7 @@ const displaypets = (data) =>{
                 <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${item.price}$</span></p>
             </div>
             <div class="flex justify-between">
-                <button class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
+                <button onclick="displayImage('${item.image}')" class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
                 <button class="btn btn-outline btn-accent text-lg font-bold">Adopt</button>
                 <button class="btn btn-outline btn-accent text-lg font-bold">Detail</button>
             </div>
@@ -75,7 +75,18 @@ const displaypets = (data) =>{
     })
 }
 
-
+// display Image function
+const displayImage = (image) =>{
+    const imageContainer = document.getElementById('image-container')
+    const div = document.createElement('div')
+    // div.classList = "border border-solid rounded-xl  p-2"
+    div.innerHTML=`
+    <div class="">
+        <img class="rounded-xl w-full h-full object-cover" src="${image}" />
+    </div>
+    `
+    imageContainer.appendChild(div)
+ }
 
 
 
