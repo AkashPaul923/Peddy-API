@@ -196,6 +196,29 @@ const displayCatagories = (data) =>{
 }
 
 
+// sort button clicked
+document.getElementById('Sort-by-price').addEventListener('click', async function(){
+    // console.log('object')
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
+    const data = await res.json()
+    console.log(data.pets)
+    sortArray(data.pets)
+})
+
+const sortArray = (pets) =>{
+    // Sorting the pets by price in descending order
+    pets.sort((a, b) => {
+        if (a.price === null) return 1;  // If price is null, place it at the end
+        if (b.price === null) return -1; // If price is null, place it at the end
+        return b.price - a.price;        // Sort in descending order
+    });
+    displaypets(pets)
+    console.log(pets)
+    
+    // console.log(array)
+}
+
+
 
 loadCatagories()
 loadpets()
