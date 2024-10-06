@@ -9,6 +9,11 @@ const loadCatagories = async () =>{
 const loadpets = async () =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     const data = await res.json()
+    // document.getElementById('loading-speaner').classList.remove('hidden')
+    // setTimeout(function (){
+    //     document.getElementById('loading-speaner').classList.add('hidden')
+    //     displaypets(data.pets)
+    // },2000)
     displaypets(data.pets)
 }
 // load catagory pets
@@ -22,15 +27,10 @@ const loadCatagorypets = async (category , id) =>{
 // active btn
 const activeBtn = (id) => {
     document.getElementById("btn-1").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-1").classList.remove("text-black")
     document.getElementById("btn-2").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-2").classList.remove("text-black")
     document.getElementById("btn-3").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-3").classList.remove("text-black")
     document.getElementById("btn-4").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-4").classList.remove("text-black")
     document.getElementById(`btn-${id}`).classList.add("bg-[#00bba6]")
-    document.getElementById(`btn-${id}`).classList.add("text-black")
 }
 // {
 //     "petId": 1,
@@ -52,42 +52,47 @@ function displaypets(data) {
     // console.log(data)
     const petCardContainer = document.getElementById('pet-card-container')
     petCardContainer.innerHTML = ''
-    if (data.length === 0) {
-        // console.log('NO data found')
-        petCardContainer.innerHTML = `
-        <div class= "p-5 rounded-xl border border-solid md:col-span-2 lg:col-span-3 bg-gray-200 py-40 w-full">
-            <div class= "flex flex-col justify-center items-center gap-7">
-                <img class="mx-auto" src="assets/error.webp" alt="">
-                <p class="text-3xl font-extrabold text-center">No Data Found</p>
+    document.getElementById('loading-speaner').classList.remove('hidden')
+    setTimeout(function (){
+        document.getElementById('loading-speaner').classList.add('hidden')
+        if (data.length === 0) {
+            // console.log('NO data found')
+            petCardContainer.innerHTML = `
+            <div class= "p-5 rounded-xl border border-solid md:col-span-2 lg:col-span-3 bg-gray-200 py-40 w-full">
+                <div class= "flex flex-col justify-center items-center gap-7">
+                    <img class="mx-auto" src="assets/error.webp" alt="">
+                    <p class="text-3xl font-extrabold text-center">No Data Found</p>
+                </div>
             </div>
-        </div>
-        `
-        return
-    }
-    data.forEach(item => {
-        // console.log(item)
-        const div = document.createElement('div')
-        div.innerHTML = `
-        <div class=" p-5 rounded-xl border border-solid ">
-            <div class=" h-[250px]" >
-                <img class="rounded-xl w-full h-full object-cover" src="${item.image}" alt="">
+            `
+            return
+        }
+        data.forEach(item => {
+            // console.log(item)
+            const div = document.createElement('div')
+            div.innerHTML = `
+            <div class=" p-5 rounded-xl border border-solid ">
+                <div class=" h-[250px]" >
+                    <img class="rounded-xl w-full h-full object-cover" src="${item.image}" alt="">
+                </div>
+                <div class="my-6 text-base text-gray-500 space-y-2">
+                    <h1 class="font-bold text-xl text-black">${item.pet_name}</h1>
+                    <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${item.breed}</span></p>
+                    <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${item.date_of_birth}</span></p>
+                    <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${item.gender}</span></p>
+                    <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${item.price}$</span></p>
+                </div>
+                <div class="flex justify-between">
+                    <button onclick="displayImage('${item.image}')" class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
+                    <button onclick="showCountDown(${item.petId})" id="adopt-btn-${item.petId}" class="btn btn-outline btn-accent text-lg font-bold">Adopt</button>
+                    <button onclick="loadDetail('${item.petId}')" class="btn btn-outline btn-accent text-lg font-bold">Detail</button>
+                </div>
             </div>
-            <div class="my-6 text-base text-gray-500 space-y-2">
-                <h1 class="font-bold text-xl text-black">${item.pet_name}</h1>
-                <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${item.breed}</span></p>
-                <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${item.date_of_birth}</span></p>
-                <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${item.gender}</span></p>
-                <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${item.price}$</span></p>
-            </div>
-            <div class="flex justify-between">
-                <button onclick="displayImage('${item.image}')" class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
-                <button class="btn btn-outline btn-accent text-lg font-bold">Adopt</button>
-                <button onclick="loadDetail('${item.petId}')" class="btn btn-outline btn-accent text-lg font-bold">Detail</button>
-            </div>
-        </div>
-        `
-        petCardContainer.appendChild(div)
-    })
+            `
+            petCardContainer.appendChild(div)
+        })
+    },2000)
+    
 }
 
 // display Image function
@@ -128,6 +133,27 @@ const showDetail = (data) =>{
     </div>
     `
     document.getElementById('modal-btn').click()
+}
+
+// show count down
+const showCountDown = (id) =>{
+    document.getElementById('count-down-modal-btn').click()
+    let count = 3;
+    const countdownElement = document.getElementById('countdown');
+
+    const countdown = setInterval(() => {
+        count--;
+        countdownElement.textContent = count;
+
+        if (count === 0) {
+            clearInterval(countdown);
+            document.getElementById('modal-close-btn').click()
+            const adoptBtn = document.getElementById(`adopt-btn-${id}`)
+            adoptBtn.innerText = 'Adopted'
+            adoptBtn.setAttribute("disabled", "true")
+            countdownElement.textContent = "3";
+        }
+    }, 1000);
 }
 
 // {

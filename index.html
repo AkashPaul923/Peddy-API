@@ -91,12 +91,23 @@
                 <button class="btn text-center bg-[#0E7A81] text-white">Sort by Price</button>
             </div>
         </section>
+        <!-- <section>
+            <div class="text-center">
+                <span class="loading loading-bars loading-lg"></span>
+            </div>
+        </section> -->
         <section>
             <div class="grid grid-cols-1  lg:grid-cols-4 gap-6">
-                <div id="pet-card-container"
+                <div class="lg:col-span-3">
+                    <div id="loading-speaner" class="text-center md:col-span-2 lg:col-span-3 hidden">
+                        <span class="loading loading-bars loading-lg"></span>
+                    </div>
+                    <div id="pet-card-container"
                     class=" lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
-
+                    
+                    </div>
                 </div>
+                
                 <div id="image-container"
                     class="grid grid-cols-2 auto-rows-min gap-6 rounded-xl border border-solid p-3">
 
@@ -106,7 +117,7 @@
 
     </main>
     <!-- Open the modal using ID.showModal() method -->
-    <button id="modal-btn" class="btn" onclick="my_modal_5.showModal()">open modal</button>
+    <button id="modal-btn" class="btn hidden" onclick="my_modal_5.showModal()">open modal</button>
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
             <div id="modal-contant">
@@ -119,6 +130,23 @@
                 </form>
             </div>
         </div>
+    </dialog>
+    <!-- adopted btn modal -->
+    <button id="count-down-modal-btn" class="btn hidden" onclick="my_modal_6.showModal()">open modal</button>
+    <dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div class="flex justify-center items-center flex-col gap-7">
+            <div><i class="fa-solid fa-handshake fa-beat text-6xl"></i></div>
+            <p>Adoption process starts for your pet</p>
+            <p id="countdown" class="font-extrabold text-7xl">3</p>
+        </div>
+        <div class="modal-action hidden">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button id="modal-close-btn" class="btn ">Close</button>
+          </form>
+        </div>
+      </div>
     </dialog>
     <footer class="bg-[#131313] py-20">
         <div class="w-11/12 mx-auto text-white grid grid-cols-1 md:grid-cols-7 gap-5">
