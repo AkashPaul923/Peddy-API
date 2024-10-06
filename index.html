@@ -8,7 +8,9 @@
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
     <!-- daisy ui and tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,9 +18,8 @@
     <script src="https://kit.fontawesome.com/710f83004a.js" crossorigin="anonymous"></script>
     <style>
         .lato-font {
-        font-family: "Lato", sans-serif;
+            font-family: "Lato", sans-serif;
         }
-
     </style>
 </head>
 
@@ -57,7 +58,8 @@
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <a class=""><img class="w-12" src="https://img.icons8.com/?size=100&id=7820&format=png&color=000000" alt=""></a>
+                    <a class=""><img class="w-12" src="https://img.icons8.com/?size=100&id=7820&format=png&color=000000"
+                            alt=""></a>
                 </div>
             </div>
         </nav>
@@ -65,13 +67,15 @@
             <div class="text-center  space-y-8 my-16 max-w-[850px] mx-auto">
                 <p class="text-gray-500 font-semibold md:text-2xl">Bringing Families Together 🔥</p>
                 <h2 class="font-extrabold text-4xl md:text-6xl lg:text-7xl">Your Path to Adoption Starts Here</h2>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
                 <button class="btn text-center bg-[#0E7A81] text-white"><a href="#main">View More</a></button>
                 <img class="mx-auto" src="assets/pet.webp" alt="">
             </div>
             <div class="text-center  space-y-8 my-16 max-w-[850px] mx-auto">
-                <h2 class="font-extrabold text-4xl">Adopt  Your  Best Friend</h2>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <h2 class="font-extrabold text-4xl">Adopt Your Best Friend</h2>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
             </div>
         </section>
     </header>
@@ -89,16 +93,33 @@
         </section>
         <section>
             <div class="grid grid-cols-1  lg:grid-cols-4 gap-6">
-                <div id="pet-card-container" class=" lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
+                <div id="pet-card-container"
+                    class=" lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
 
                 </div>
-                <div id="image-container" class="grid grid-cols-2 auto-rows-min gap-6 rounded-xl border border-solid p-3">
+                <div id="image-container"
+                    class="grid grid-cols-2 auto-rows-min gap-6 rounded-xl border border-solid p-3">
 
                 </div>
             </div>
         </section>
 
     </main>
+    <!-- Open the modal using ID.showModal() method -->
+    <button id="modal-btn" class="btn" onclick="my_modal_5.showModal()">open modal</button>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="modal-contant">
+
+            </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <footer class="bg-[#131313] py-20">
         <div class="w-11/12 mx-auto text-white grid grid-cols-1 md:grid-cols-7 gap-5">
             <div class="space-y-6 md:col-span-3">
@@ -114,10 +135,14 @@
                     Openings hours: 9.00 AM - 5.00 PM
                 </P>
                 <div class="flex gap-3">
-                    <img class="w-12 h-12" src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="">
-                    <img class="w-12 h-12" src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png&color=FFFFFF" alt="">
-                    <img class="w-12 h-12" src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" alt="">
-                    <img class="w-12 h-12" src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="">
+                    <img class="w-12 h-12"
+                        src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="">
+                    <img class="w-12 h-12"
+                        src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png&color=FFFFFF" alt="">
+                    <img class="w-12 h-12" src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000"
+                        alt="">
+                    <img class="w-12 h-12"
+                        src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="">
                 </div>
             </div>
             <div class="space-y-6 md:col-span-2">
