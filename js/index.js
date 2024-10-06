@@ -34,8 +34,21 @@ const loadCatagorypets = async (category) =>{
 
 // display all pets
 const displaypets = (data) =>{
+    console.log(data)
     const petCardContainer = document.getElementById('pet-card-container')
     petCardContainer.innerHTML=''
+    if(data.length === 0){
+        // console.log('NO data found')
+        petCardContainer.innerHTML=`
+        <div class= "p-5 rounded-xl border border-solid lg:col-span-3 bg-gray-200 py-40">
+            <div class= "flex flex-col justify-center items-center gap-7">
+                <img class="mx-auto" src="assets/error.webp" alt="">
+                <p class="text-3xl font-extrabold text-center">No Data Found</p>
+            </div>
+        </div>
+        `
+        return
+    }
     data.forEach(item =>{
         // console.log(item)
         const div = document.createElement('div')
