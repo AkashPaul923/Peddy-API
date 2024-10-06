@@ -12,28 +12,12 @@
     <!-- daisy ui and tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/710f83004a.js" crossorigin="anonymous"></script>
     <style>
         .lato-font {
         font-family: "Lato", sans-serif;
         }
-        /* .catagory-btn{
-            border: 2px solid rgba(14, 121, 129, 0.5);
-            background-color: rgb(255, 255, 255);
-            padding: 24px 40px;
-            border-radius: 16px;
-
-        }
-        .active-catagory-btn{
-            border: 2px solid rgb(14, 122, 129);
-            background-color: rgb(230, 241, 242);
-            padding: 24px 40px;
-            border-radius: 120px; 
-        } */
-        /* .catagory-btn :hover{
-            background-color: gray;
-            padding: 24px 40px;
-            border-radius: 16px;
-        } */
 
     </style>
 </head>
@@ -82,7 +66,7 @@
                 <p class="text-gray-500 font-semibold md:text-2xl">Bringing Families Together 🔥</p>
                 <h2 class="font-extrabold text-4xl md:text-6xl lg:text-7xl">Your Path to Adoption Starts Here</h2>
                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-                <button class="btn text-center bg-[#0E7A81] text-white"><a href="">View More</a></button>
+                <button class="btn text-center bg-[#0E7A81] text-white"><a href="#main">View More</a></button>
                 <img class="mx-auto" src="assets/pet.webp" alt="">
             </div>
             <div class="text-center  space-y-8 my-16 max-w-[850px] mx-auto">
@@ -91,13 +75,28 @@
             </div>
         </section>
     </header>
-    <main class="w-11/12 mx-auto mb-24">
+    <main id="main" class="w-11/12 mx-auto mb-24">
         <section>
             <div id="button-container" class="flex justify-between flex-wrap  md:gap-5 ">
 
             </div>
         </section>
-        <!-- <button class="catagory-btn">dog</button> -->
+        <section>
+            <div class="flex justify-between items-center my-8">
+                <h3 class="font-extrabold text-2xl">Best Deal For you</h3>
+                <button class="btn text-center bg-[#0E7A81] text-white">Sort by Price</button>
+            </div>
+        </section>
+        <section>
+            <div class="grid grid-cols-1  lg:grid-cols-4 gap-6">
+                <div id="pet-card-container" class=" lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer class="bg-[#131313] py-20">
@@ -138,6 +137,23 @@
             </div>
         </div>
     </footer>
+    <!-- <div class="w-[350px] p-5 rounded-xl border border-solid ">
+        <div>
+            <img class="rounded-xl" src="assets/pet.webp" alt="">
+        </div>
+        <div class="my-6 text-base text-gray-500 space-y-2">
+            <h1 class="font-bold text-xl text-black">Mister Tartosh</h1>
+            <p><i class="fa-solid fa-border-all"></i> <span> Breed: Golder retriever</span></p>
+            <p><i class="fa-regular fa-calendar-days"></i><span> Birth: 2024</span></p>
+            <p><i class="fa-solid fa-mercury"></i> <span> Gender: Female</span></p>
+            <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : 199$</span></p>
+        </div>
+        <div class="flex justify-between">
+            <button class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
+            <button class="btn btn-outline btn-accent text-lg font-bold">Adopt</button>
+            <button class="btn btn-outline btn-accent text-lg font-bold">Detail</button>
+        </div>
+    </div> -->
 
 
     <script src="js/index.js"></script>
