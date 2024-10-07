@@ -1,4 +1,5 @@
 // console.log("js file connected");
+
 // load catagories
 const loadCatagories = async () =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
@@ -9,11 +10,6 @@ const loadCatagories = async () =>{
 const loadpets = async () =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     const data = await res.json()
-    // document.getElementById('loading-speaner').classList.remove('hidden')
-    // setTimeout(function (){
-    //     document.getElementById('loading-speaner').classList.add('hidden')
-    //     displaypets(data.pets)
-    // },2000)
     displaypets(data.pets)
 }
 // load catagory pets
@@ -49,14 +45,14 @@ const activeBtn = (id) => {
 
 // display all pets
 function displaypets(data) {
-    // console.log(data)
+    
     const petCardContainer = document.getElementById('pet-card-container')
     petCardContainer.innerHTML = ''
     document.getElementById('loading-speaner').classList.remove('hidden')
     setTimeout(function (){
         document.getElementById('loading-speaner').classList.add('hidden')
         if (data.length === 0) {
-            // console.log('NO data found')
+            
             petCardContainer.innerHTML = `
             <div class= "p-5 rounded-xl border border-solid md:col-span-2 lg:col-span-3 bg-gray-200 py-40 w-full">
                 <div class= "flex flex-col justify-center items-center gap-7">
@@ -68,7 +64,7 @@ function displaypets(data) {
             return
         }
         data.forEach(item => {
-            // console.log(item)
+            
             const div = document.createElement('div')
             div.innerHTML = `
             <div class=" p-5 rounded-xl border border-solid ">
@@ -77,10 +73,10 @@ function displaypets(data) {
                 </div>
                 <div class="my-6 text-base text-gray-500 space-y-2">
                     <h1 class="font-bold text-xl text-black">${item.pet_name}</h1>
-                    <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${item.breed}</span></p>
-                    <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${item.date_of_birth}</span></p>
-                    <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${item.gender}</span></p>
-                    <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${item.price}$</span></p>
+                    <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${item.breed === undefined ? "Unknown" : item.breed} </span></p>
+                    <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${item.date_of_birth === null || item.date_of_birth === undefined ? "Unknown" : item.date_of_birth}</span></p>
+                    <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${item.gender ==="Male" || item.gender ==="Female"? item.gender : "Unknown" }</span></p>
+                    <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${item.price === null ? "Unknown" : item.price }$</span></p>
                 </div>
                 <div class="flex justify-between">
                     <button onclick="displayImage('${item.image}')" class="btn btn-outline btn-accent  text-lg font-bold"><i class="fa-regular fa-thumbs-up"></i></button>
@@ -99,7 +95,6 @@ function displaypets(data) {
 const displayImage = (image) =>{
     const imageContainer = document.getElementById('image-container')
     const div = document.createElement('div')
-    // div.classList = "border border-solid rounded-xl  p-2"
     div.innerHTML=`
     <div class="">
         <img class="rounded-xl w-full h-full object-cover" src="${image}" />
@@ -121,13 +116,16 @@ const showDetail = (data) =>{
     <div class=" h-[250px]" >
         <img class="rounded-xl w-full h-full object-cover" src="${data.image}" alt="">
     </div>
-    <div class="my-6 text-base text-gray-500 space-y-2">
+    <div class="my-6 text-base text-gray-500 space-y-4">
         <h1 class="font-bold text-xl text-black">${data.pet_name}</h1>
-        <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${data.breed}</span></p>
-        <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${data.date_of_birth}</span></p>
-        <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${data.gender}</span></p>
-        <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${data.price}$</span></p>
-        <p><i class="fa-solid fa-virus"></i> <span> Vaccinated Status : ${data.vaccinated_status}</span></p>
+        <div class= " grid grid-cols-2 gap-3">
+            <p><i class="fa-solid fa-border-all"></i> <span> Breed : ${data.breed === undefined ? "Unknown" : data.breed}</span></p>
+            <p><i class="fa-regular fa-calendar-days"></i><span> Birth : ${data.date_of_birth === null || data.date_of_birth === undefined ? "Unknown" : data.date_of_birth}</span></p>
+            <p><i class="fa-solid fa-mercury"></i> <span> Gender : ${data.gender ==="Male" || data.gender ==="Female"? data.gender : "Unknown" }</span></p>
+            <p><i class="fa-solid fa-dollar-sign"></i> <span> Price : ${data.price === null ? "Unknown" : data.price }$</span></p>
+            <p><i class="fa-solid fa-virus"></i> <span> Vaccinated Status : ${data.vaccinated_status === null || data.vaccinated_status === undefined ? "Unknown" : data.vaccinated_status }</span></p>
+        </div>
+        <div class="divider"></div>
         <p class="font-bold text-xl text-black">Detail Information</p>
         <p>${data.pet_details}</p>
     </div>
@@ -198,10 +196,9 @@ const displayCatagories = (data) =>{
 
 // sort button clicked
 document.getElementById('Sort-by-price').addEventListener('click', async function(){
-    // console.log('object')
+    
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     const data = await res.json()
-    console.log(data.pets)
     sortArray(data.pets)
 })
 
@@ -213,9 +210,6 @@ const sortArray = (pets) =>{
         return b.price - a.price;        // Sort in descending order
     });
     displaypets(pets)
-    console.log(pets)
-    
-    // console.log(array)
 }
 
 
