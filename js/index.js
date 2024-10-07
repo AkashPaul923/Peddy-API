@@ -20,14 +20,7 @@ const loadCatagorypets = async (category , id) =>{
     activeBtn(id)
     
 }
-// active btn
-const activeBtn = (id) => {
-    document.getElementById("btn-1").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-2").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-3").classList.remove("bg-[#00bba6]")
-    document.getElementById("btn-4").classList.remove("bg-[#00bba6]")
-    document.getElementById(`btn-${id}`).classList.add("bg-[#00bba6]")
-}
+
 // {
 //     "petId": 1,
 //     "breed": "Golden Retriever",
@@ -181,7 +174,7 @@ const displayCatagories = (data) =>{
    data.forEach((item) => {
     const div = document.createElement('div')
    div.innerHTML = `
-   <button id="btn-${item.id}" onclick="loadCatagorypets('${item.category}','${item.id}')" class="btn btn-outline btn-accent md:btn-lg flex items-center justify-center">
+   <button id="btn-${item.id}" onclick="loadCatagorypets('${item.category}','${item.id}')" class="btn  border-solid border-2 border-[#e6f1f2] md:btn-lg flex items-center justify-center">
         <div class="flex items-center gap-1 md:gap-3 lg:gap-5">
             <img class="w-[15px] md:w-[25px] lg:w-[40px]" src="${item.category_icon}" alt="">
             <p class="text-xs md:text-lg lg:text-2xl font-bold text-black">${item.category}</p>
@@ -191,6 +184,27 @@ const displayCatagories = (data) =>{
    buttonContainer.appendChild(div)
    })
    
+}
+// active btn
+const activeBtn = (id) => {
+    // bg color add and remove
+    document.getElementById("btn-1").classList.remove("bg-[#e6f1f2]")
+    document.getElementById("btn-2").classList.remove("bg-[#e6f1f2]")
+    document.getElementById("btn-3").classList.remove("bg-[#e6f1f2]")
+    document.getElementById("btn-4").classList.remove("bg-[#e6f1f2]")
+    document.getElementById(`btn-${id}`).classList.add("bg-[#e6f1f2]")
+    // rounded add and remove
+    document.getElementById("btn-1").classList.remove("rounded-[120px]")
+    document.getElementById("btn-2").classList.remove("rounded-[120px]")
+    document.getElementById("btn-3").classList.remove("rounded-[120px]")
+    document.getElementById("btn-4").classList.remove("rounded-[120px]")
+    document.getElementById(`btn-${id}`).classList.add("rounded-[120px]")
+    // border color add and remove
+    document.getElementById("btn-1").classList.remove("border-[#0e7a81]")
+    document.getElementById("btn-2").classList.remove("border-[#0e7a81]")
+    document.getElementById("btn-3").classList.remove("border-[#0e7a81]")
+    document.getElementById("btn-4").classList.remove("border-[#0e7a81]")
+    document.getElementById(`btn-${id}`).classList.add("border-[#0e7a81]")
 }
 
 
@@ -211,6 +225,11 @@ const sortArray = (pets) =>{
     });
     displaypets(pets)
 }
+
+// View more in banner clicked
+document.getElementById('view-more-btn').addEventListener('click', function(){
+    document.getElementById('main-section').scrollIntoView({behavior : 'smooth'})
+})
 
 
 
